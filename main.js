@@ -1,16 +1,21 @@
+$(document).ready(function() {
 
 
 
 
+    $(window).bind('keydown', function(e) {
+        let j = e.keyCode
+        var x = $("audio");
+        console.log(x);
+        audio = $("audio#j").html();
+        audio.play();
+    });
 
-
-
-
-
-
-
-
-
+    // $(window).on("keydown", function() {
+    //     console.log(this);
+    //
+    // })
+});
 
 
 
