@@ -1,27 +1,33 @@
 $(document).ready(function() {
 
-    const keyCodes65 = new Audio('sounds/clap.wav');
-    const keyCodes83 = new Audio('sounds/hihat.wav');
-    const keyCodes68 = new Audio('sounds/kick.wav');
-    const keyCodes70 = new Audio('sounds/openhat.wav');
-    const keyCodes71 = new Audio('sounds/boom.wav');
-    const keyCodes72 = new Audio('sounds/ride.wav');
-    const keyCodes74 = new Audio('sounds/snare.wav');
-    const keyCodes75 = new Audio('sounds/tom.wav');
-    const keyCodes76 = new Audio('sounds/tink.wav');
+    const arrayOfKeyCodes = [
+        {65: new Audio('sounds/clap.wav')},
+        {83: new Audio('sounds/hihat.wav')},
+        {68: new Audio('sounds/kick.wav')},
+        {70: new Audio('sounds/openhat.wav')},
+        {71: new Audio('sounds/boom.wav')},
+        {72: new Audio('sounds/ride.wav')},
+        {74: new Audio('sounds/snare.wav')},
+        {75: new Audio('sounds/tom.wav')},
+        {76: new Audio('sounds/tink.wav')}
+    ]
+
 
 
     $(window).bind('keydown', function(e) {
-        let j = e.keyCode
-        var x = $("audio");
-        console.log(x);
+        let keyCode = e.keyCode;
+        arrayOfKeyCodes.forEach(function(p) {
+            console.log(p);
+            if (p.hasOwnProperty(keyCode)) {
+                p[keyCode].currentTime = 0;
+                p[keyCode].play();
+                $("#" + keyCode).addClass("playing");
 
+            }
+
+        });
     });
 
-    $(window).on("keydown", function() {
-        console.log(this);
-
-    })
 });
 
 
